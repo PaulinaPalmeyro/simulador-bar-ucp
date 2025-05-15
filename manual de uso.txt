@@ -1,0 +1,31 @@
+MANUAL DE USO - Simulador TP2 (Modelos y Simulación)
+====================================================
+
+REQUISITOS:
+------------
+- Python 3.8 o superior instalado en tu sistema.
+- Instalar las dependencias necesarias ejecutando:
+
+    pip install -r requirements.txt
+
+
+CÓMO EJECUTAR LA INTERFAZ GRÁFICA:
+-----------------------------------
+1. Abre una terminal o consola de comandos.
+2. Navega a la carpeta raíz del proyecto (donde está este archivo y el archivo requirements.txt).
+3. Ejecuta el siguiente comando:
+
+    python -m interfaz.ui
+
+
+¿CÓMO USAR LA INTERFAZ?
+------------------------
+- Se abrirá una ventana gráfica con un menú a la izquierda.
+- Elige el generador de números aleatorios que desees utilizar (Cuadrados Medios, Fibonacci, etc.).
+- Ingresa los parámetros solicitados en los cuadros de diálogo.
+- El sistema validará automáticamente la secuencia generada con el test de Chi-cuadrado.
+- Si la secuencia es válida, podrás simular la atención en el Bar UCP usando el botón correspondiente.
+- Los resultados y análisis aparecerán en el área de la derecha.
+- Para salir, haz clic en el botón "Salir".
+
+¡Listo! Así puedes utilizar el simulador de manera sencilla y visual. 
