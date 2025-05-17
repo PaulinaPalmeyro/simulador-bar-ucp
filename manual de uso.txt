@@ -29,3 +29,34 @@ CÓMO EJECUTAR LA INTERFAZ GRÁFICA:
 - Para salir, haz clic en el botón "Salir".
 
 ¡Listo! Así puedes utilizar el simulador de manera sencilla y visual. 
+
+
+
+COMANDOS Y PASOS PARA EJECUTAR EL SIMULADOR DESDE CERO
+------------------------------------------------------
+1. INSTALAR PYTHON (si no está instalado)
+En Windows:
+
+Descargá Python desde: https://www.python.org/downloads/
+
+Durante la instalación, asegurate de tildar la opción:
+✅ Add Python to PATH
+
+Finalizá la instalación normalmente.
+
+Verificar instalación:
+
+python --version
+Deberías ver algo como: Python 3.10.11
+
+2. DESCARGAR EL PROYECTO
+Si el proyecto está comprimido en .zip, descomprimilo en una carpeta.
+
+4. INSTALAR DEPENDENCIAS
+
+pip install -r requirements.txt
+Esto instalará bibliotecas como scipy necesarias para el test de Chi-cuadrado.
+
+
+6. EJECUTAR EL PROGRAMA
+python -m interfaz.ui
