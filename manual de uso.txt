@@ -54,6 +54,8 @@ Si el proyecto está comprimido en .zip, descomprimilo en una carpeta.
 
 4. INSTALAR DEPENDENCIAS
 
+Abrir una terminal y ejecutar el siguiente comando:
+
 pip install -r requirements.txt
 Esto instalará bibliotecas como scipy necesarias para el test de Chi-cuadrado.
 
