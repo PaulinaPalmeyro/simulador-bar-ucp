@@ -21,17 +21,22 @@ def chi_cuadrado(ui: list[float], k: int = 10, alpha: float = 0.05):
             max_desviacion = desviacion
             intervalo_max_desviacion = i
 
+    # Nuevo criterio de seguridad
+    minimo_recomendado = k * 5
+    generado_suficiente = n >= minimo_recomendado
+    pasa_test = (chi_cuadrado_valor < chi_critico) and generado_suficiente
+
     return {
         "estadistico": round(chi_cuadrado_valor, 4),
         "critico": round(chi_critico, 4),
         "frecuencia_esperada": fe,
         "frecuencias_observadas": intervalos,
-        "pasa": chi_cuadrado_valor < chi_critico,
+        "pasa": pasa_test,
         "k": k,
         "n": n,
         "max_desviacion": max_desviacion,
         "intervalo_max_desviacion": intervalo_max_desviacion,
-        "cumple_criterio_nk": (n / k) >= 5
+        "cumple_criterio_nk": generado_suficiente
     }
 
 def mostrar_resultado(resultado):
@@ -70,9 +75,15 @@ def mostrar_resultado(resultado):
 
     print("\n✅ Conclusión:")
     if not resultado['cumple_criterio_nk']:
-        print("El número de datos es bajo en relación con los intervalos elegidos. El test puede no ser confiable. Aumentar la cantidad de números generados para obtener mejores resultados.")
+        print("❌ La secuencia NO pasa el test de Chi-cuadrado.")
+        print("El número de datos es bajo en relación con los intervalos elegidos. El test puede no ser confiable.")
+        print("Se recomienda generar una mayor cantidad de números pseudoaleatorios para obtener una validación más confiable.")
+    elif resultado['pasa']:
+        print(f"✅ La secuencia PASA el test de Chi-cuadrado.")
+        print(f"El estadístico calculado ({resultado['estadistico']}) es menor que el valor crítico ({resultado['critico']}).")
+        print("Esto indica que las diferencias entre las frecuencias observadas y esperadas no son significativas. La secuencia puede considerarse uniforme.")
     else:
-        if resultado['pasa']:
-            print(f"✅ La secuencia PASA el test de Chi-cuadrado.\nEl estadístico calculado ({resultado['estadistico']}) es menor que el valor crítico ({resultado['critico']}).\nEsto indica que las diferencias entre las frecuencias observadas y esperadas no son significativas. La secuencia puede considerarse uniforme.")
-        else:
-            print(f"❌ La secuencia NO pasa el test de Chi-cuadrado.\nEl estadístico calculado ({resultado['estadistico']}) es mayor que el valor crítico ({resultado['critico']}).\nEsto indica que hay demasiada diferencia entre lo observado y lo esperado.\nLa mayor desviación fue en el intervalo {resultado['intervalo_max_desviacion'] + 1}, con una diferencia de {resultado['max_desviacion']:.2f} valores. Se recomienda generar una nueva secuencia.")
+        print(f"❌ La secuencia NO pasa el test de Chi-cuadrado.")
+        print(f"El estadístico calculado ({resultado['estadistico']}) es mayor que el valor crítico ({resultado['critico']}).")
+        print(f"La mayor desviación fue en el intervalo {resultado['intervalo_max_desviacion'] + 1}, con una diferencia de {resultado['max_desviacion']:.2f} valores.")
+        print("Se recomienda generar una nueva secuencia o revisar el método utilizado.")
